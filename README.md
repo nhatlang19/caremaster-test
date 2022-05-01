@@ -10,6 +10,8 @@
 ### UNIT TEST ###
 
 - php artisan test --env=testing
+- docker exec -it caremaster-test_laravel.test_1 bash
+    - run `php artisan migrate --seed`
 
 ### PORT ###
 
