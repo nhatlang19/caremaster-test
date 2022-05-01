@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SendEmailEvent;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -39,7 +40,9 @@ class CompaniesController extends BaseController
             unset($data['logoFile']);
         }
        
-        return parent::doStore($data);
+        $company = parent::doStore($data);
+        event(new SendEmailEvent($company));
+        return $company;
     }
 
     public function update(Request $request, $id)

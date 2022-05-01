@@ -2,7 +2,6 @@
 
 namespace App\Observers;
 
-use App\Events\SendEmailEvent;
 use App\Models\Company;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,7 +15,7 @@ class CompanyObserver
      */
     public function created(Company $company)
     {
-        event(new SendEmailEvent($company));
+        
     }
 
     /**
